@@ -9,7 +9,7 @@ NAMA_FILE_MUSIK = "klbmusik.mp3"
 # Pengaturan Konfigurasi Halaman Browser
 st.set_page_config(page_title="Hadiah Untuk Sayang", page_icon="💗", layout="centered")
 
-# Menggunakan CSS Custom agar tampilannya bernuansa Pink manis di HP
+# Menggunakan CSS Custom untuk tampilan tema Pink manis dan Animasi Amplop Surat
 st.markdown("""
     <style>
     .stApp { background-color: #FFF0F5; }
@@ -20,10 +20,66 @@ st.markdown("""
         border: none; display: block; margin: 0 auto;
     }
     .stButton>button:hover { background-color: #D63384 !important; }
+    
+    /* --- Gaya Visual Amplop Surat --- */
+    .envelope-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px auto;
+        perspective: 1000px;
+    }
+    .envelope {
+        position: relative;
+        width: 180px;
+        height: 120px;
+        background: #F48FB1;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    /* Bagian Lipatan Segitiga Atas Amplop */
+    .envelope::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 90px solid transparent;
+        border-right: 90px solid transparent;
+        border-top: 65px solid #F06292;
+        transform-origin: top;
+        transition: transform 0.4s ease;
+        z-index: 2;
+    }
+    /* Bagian Dalam Jalur Surat keluar */
+    .letter {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 150px;
+        height: 90px;
+        background: #FFFFFF;
+        border-radius: 5px;
+        z-index: 1;
+        transition: transform 0.4s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+    /* Animasi saat tombol ditekan (efek membuka) */
+    .open::before {
+        transform: rotateX(180px);
+        z-index: 0;
+    }
+    .open .letter {
+        transform: translateY(-40px);
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# Fungsi rahasia untuk menyisipkan musik autoplay setelah ada ketukan tombol
+# Fungsi untuk memutar musik latar secara tersembunyi
 def mainkan_musik_latar(file_path):
     try:
         with open(file_path, "rb") as f:
@@ -36,13 +92,13 @@ def mainkan_musik_latar(file_path):
             """
             st.markdown(md, unsafe_allow_html=True)
     except FileNotFoundError:
-        st.error("File musik tidak ditemukan di GitHub kamu!")
+        pass
 
 # Inisialisasi state halaman agar bisa berpindah saat tombol diklik
 if 'page' not in st.session_state:
     st.session_state.page = 'pembuka'
 
-# 🎵 Jika halaman bukan pembuka (artinya user sudah klik tombol pertama), musik akan mulai disuntikkan secara tersembunyi
+# Mainkan musik di luar halaman pembuka agar lancar dan tidak terputus
 if st.session_state.page != 'pembuka':
     mainkan_musik_latar(NAMA_FILE_MUSIK)
 
@@ -51,6 +107,16 @@ if st.session_state.page == 'pembuka':
     st.markdown("<h1 style='color: #D63384;'>💗 UNTUK KAMU 💗</h1>", unsafe_allow_html=True)
     st.write("Ada sedikit sesuatu yang ingin mas lidooo kasii buat kamuu...")
     st.write("")
+    
+    # Menampilkan Visual Amplop Tertutup sebelum tombol diklik
+    st.markdown("""
+        <div class="envelope-container">
+            <div class="envelope">
+                <div class="letter">❤️</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
     st.markdown("""
     Hai Sayangkuu issahhh ❤️  
     Aku tahuu kok kamu lagii enggaa enak badann.  
@@ -60,7 +126,7 @@ if st.session_state.page == 'pembuka':
     tapi semoga sedikit bisa bikin kmuuu tersenyum.
     """)
     st.write("")
-    if st.button("🎁 BUKA HADIAH"):
+    if st.button("🎁 BUKA AMPLOP"):
         st.session_state.page = 'hadiah1'
         st.rerun()
 
@@ -158,7 +224,7 @@ elif st.session_state.page == 'ending':
     Jangan lupa istirahattt dan jangann terlalu memaksakan dirii yaa.  
     
     Kalau hari ini kamu merasa tidak baik-baik sajaa,  
-    tidak apaa-apaaa. Istirahattt duluuu.  
+    tidak apaa-apaaa. Ostirahattt duluuu.  
     Semoga hadiah kecil dari mas lidoo ini bisa bikin aisyahh tersenyum meski cuma sedikit.  
     
     **❤️ AKUUU SAYANGGG KAMUUU AISYAAHHHHHH ❤️**
