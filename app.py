@@ -23,6 +23,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# 🎵 KUNCI UTAMA: Pemutar musik ditaruh di paling atas luar slide
+# Fitur loop=True membuat lagu otomatis mengulang dari awal jika sudah habis
+st.write("👇 *Putar musiknya di sini agar menemani sampai akhir ya sayang* 👇")
+st.audio(NAMA_FILE_MUSIK, format="audio/mp3", loop=True)
+st.write("---") # Garis pembatas tipis agar tampilan tetap rapi
+
 # Inisialisasi state halaman agar bisa berpindah saat tombol diklik
 if 'page' not in st.session_state:
     st.session_state.page = 'pembuka'
@@ -32,12 +38,6 @@ if st.session_state.page == 'pembuka':
     st.markdown("<h1 style='color: #D63384;'>💗 UNTUK KAMU 💗</h1>", unsafe_allow_html=True)
     st.write("Ada sedikit sesuatu yang ingin mas lidooo kasii buat kamuu...")
     st.write("")
-    
-    # Kotak pemutar musik bawaan Streamlit
-    st.write("👇 *Putar musiknya di sini dulu ya sayang* 👇")
-    st.audio(NAMA_FILE_MUSIK, format="audio/mp3", loop=True)
-    st.write("")
-    
     st.markdown("""
     Hai Sayangkuu issahhh ❤️  
     Aku tahuu kok kamu lagii enggaa enak badann.  
