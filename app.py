@@ -1,4 +1,5 @@
 import streamlit as st
+import base64
 
 # =========================================================================
 # 🎵 NAMA FILE MUSIK KAMU (Harus sama persis dengan yang di-upload di GitHub)
@@ -19,19 +20,31 @@ st.markdown("""
         border: none; display: block; margin: 0 auto;
     }
     .stButton>button:hover { background-color: #D63384 !important; }
-    .stAudio { display: block; margin: 0 auto; max-width: 300px; }
     </style>
 """, unsafe_allow_html=True)
 
-# 🎵 KUNCI UTAMA: Pemutar musik ditaruh di paling atas luar slide
-# Fitur loop=True membuat lagu otomatis mengulang dari awal jika sudah habis
-st.write("👇 *Putar musiknya di sini agar menemani sampai akhir ya sayang* 👇")
-st.audio(NAMA_FILE_MUSIK, format="audio/mp3", loop=True)
-st.write("---") # Garis pembatas tipis agar tampilan tetap rapi
+# Fungsi rahasia untuk menyisipkan musik autoplay setelah ada ketukan tombol
+def mainkan_musik_latar(file_path):
+    try:
+        with open(file_path, "rb") as f:
+            data = f.read()
+            b64 = base64.b64encode(data).decode()
+            md = f"""
+                <audio autoplay loop style="display:none;">
+                    <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+                </audio>
+            """
+            st.markdown(md, unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error("File musik tidak ditemukan di GitHub kamu!")
 
 # Inisialisasi state halaman agar bisa berpindah saat tombol diklik
 if 'page' not in st.session_state:
     st.session_state.page = 'pembuka'
+
+# 🎵 Jika halaman bukan pembuka (artinya user sudah klik tombol pertama), musik akan mulai disuntikkan secara tersembunyi
+if st.session_state.page != 'pembuka':
+    mainkan_musik_latar(NAMA_FILE_MUSIK)
 
 # --- HALAMAN PEMBUKA ---
 if st.session_state.page == 'pembuka':
