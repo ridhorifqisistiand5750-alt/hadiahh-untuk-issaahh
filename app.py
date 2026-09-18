@@ -1,9 +1,12 @@
 import streamlit as st
-import time
+
+# =========================================================================
+# 🎵 NAMA FILE MUSIK KAMU (Harus sama persis dengan yang di-upload di GitHub)
+# =========================================================================
+NAMA_FILE_MUSIK = "klbmusik.mp3" 
 
 # Pengaturan Konfigurasi Halaman Browser
 st.set_page_config(page_title="Hadiah Untuk Sayang", page_icon="💗", layout="centered")
-LINK_LAGU_MP3 = "klbmusik.mp3"
 
 # Menggunakan CSS Custom agar tampilannya bernuansa Pink manis di HP
 st.markdown("""
@@ -16,7 +19,7 @@ st.markdown("""
         border: none; display: block; margin: 0 auto;
     }
     .stButton>button:hover { background-color: #D63384 !important; }
-    .heart-bg { font-size: 24px; text-align: center; color: #FF69B4; animation: pulse 1s infinite; }
+    .stAudio { display: block; margin: 0 auto; max-width: 300px; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -29,6 +32,12 @@ if st.session_state.page == 'pembuka':
     st.markdown("<h1 style='color: #D63384;'>💗 UNTUK KAMU 💗</h1>", unsafe_allow_html=True)
     st.write("Ada sedikit sesuatu yang ingin mas lidooo kasii buat kamuu...")
     st.write("")
+    
+    # Kotak pemutar musik bawaan Streamlit
+    st.write("👇 *Putar musiknya di sini dulu ya sayang* 👇")
+    st.audio(NAMA_FILE_MUSIK, format="audio/mp3", loop=True)
+    st.write("")
+    
     st.markdown("""
     Hai Sayangkuu issahhh ❤️  
     Aku tahuu kok kamu lagii enggaa enak badann.  
@@ -127,7 +136,7 @@ elif st.session_state.page == 'hadiah5':
 
 # --- ENDING ---
 elif st.session_state.page == 'ending':
-    st.balloons() # Efek balon meluncur di layar HP saat sukses selesai
+    st.balloons() 
     st.markdown("<h2 style='color: #D63384;'>❤️ HADIAH TERAKHIR ❤️</h2>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 60px;'>❤️</h1>", unsafe_allow_html=True)
     st.markdown("""
