@@ -94,12 +94,14 @@ def mainkan_musik_latar(file_path):
     except FileNotFoundError:
         pass
 
-# Inisialisasi state halaman agar bisa berpindah saat tombol diklik
+# Inisialisasi state halaman & musik agar bisa terpantau
 if 'page' not in st.session_state:
     st.session_state.page = 'pembuka'
+if 'musik_dinyalakan' not in st.session_state:
+    st.session_state.musik_dinyalakan = False
 
-# Mainkan musik di luar halaman pembuka agar lancar dan tidak terputus
-if st.session_state.page != 'pembuka':
+# 🎵 KUNCI PERBAIKAN: Jika musik sudah dipicu sekali, ia akan terus dimuat di halaman mana pun termasuk saat reset ke awal
+if st.session_state.musik_dinyalakan:
     mainkan_musik_latar(NAMA_FILE_MUSIK)
 
 # --- HALAMAN PEMBUKA ---
@@ -108,7 +110,7 @@ if st.session_state.page == 'pembuka':
     st.write("Ada sedikit sesuatu yang ingin mas lidooo kasii buat kamuu...")
     st.write("")
     
-    # Menampilkan Visual Amplop Tertutup sebelum tombol diklik
+    # Menampilkan Visual Amplop Tertutup
     st.markdown("""
         <div class="envelope-container">
             <div class="envelope">
@@ -127,6 +129,7 @@ if st.session_state.page == 'pembuka':
     """)
     st.write("")
     if st.button("🎁 BUKA AMPLOP"):
+        st.session_state.musik_dinyalakan = True # Memicu musik menyala permanen
         st.session_state.page = 'hadiah1'
         st.rerun()
 
@@ -224,7 +227,7 @@ elif st.session_state.page == 'ending':
     Jangan lupa istirahattt dan jangann terlalu memaksakan dirii yaa.  
     
     Kalau hari ini kamu merasa tidak baik-baik sajaa,  
-    tidak apaa-apaaa. Ostirahattt duluuu.  
+    tidak apaa-apaaa. Istirahattt duluuu.  
     Semoga hadiah kecil dari mas lidoo ini bisa bikin aisyahh tersenyum meski cuma sedikit.  
     
     **❤️ AKUUU SAYANGGG KAMUUU AISYAAHHHHHH ❤️**
