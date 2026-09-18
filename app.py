@@ -101,7 +101,7 @@ elif st.session_state.page == 'hadiah4':
     Bunganya memang cuma digitalll,  
     tapi orangg yang kasiii inii sayanggg sekalii sama kamuuu loo. ❤️  
     
-    Semoga harii kamuu jadii sedikit lebihh indahhh yaa 🫶🫶path.
+    Semoga harii kamuu jadii sedikit lebihh indahhh yaa 🫶🫶.
     """)
     if st.button("😂 LANJUT KE HADIAH TERAKHIR"):
         st.session_state.page = 'hadiah5'
