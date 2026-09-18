@@ -3,6 +3,7 @@ import time
 
 # Pengaturan Konfigurasi Halaman Browser
 st.set_page_config(page_title="Hadiah Untuk Sayang", page_icon="💗", layout="centered")
+LINK_LAGU_MP3 = "Lirik Lagu   Kita Lewati Berdua - overnight  #liriklagu.mp3"
 
 # Menggunakan CSS Custom agar tampilannya bernuansa Pink manis di HP
 st.markdown("""
