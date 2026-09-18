@@ -25,7 +25,7 @@ if 'page' not in st.session_state:
 
 # --- HALAMAN PEMBUKA ---
 if st.session_state.page == 'pembuka':
-    st.markdown("<h1 style='color: #D63384;'>💗 UNTUK KAMU 💗</h1>", unsafe_allow_index=True)
+    st.markdown("<h1 style='color: #D63384;'>💗 UNTUK KAMU 💗</h1>", unsafe_allow_html=True)
     st.write("Ada sedikit sesuatu yang ingin mas lidooo kasii buat kamuu...")
     st.write("")
     st.markdown("""
@@ -43,7 +43,7 @@ if st.session_state.page == 'pembuka':
 
 # --- HADIAH 1 ---
 elif st.session_state.page == 'hadiah1':
-    st.markdown("<h2 style='color: #D63384;'>💌 HADIAH PERTAMA</h2>", unsafe_allow_index=True)
+    st.markdown("<h2 style='color: #D63384;'>💌 HADIAH PERTAMA</h2>", unsafe_allow_html=True)
     st.markdown("""
     Hai Sayangkuu issahhh ❤️  
     Aku tahu akhir-akhir ini perut kmuu lagii enggaa nyamann.  
@@ -62,8 +62,8 @@ elif st.session_state.page == 'hadiah1':
 
 # --- HADIAH 2 ---
 elif st.session_state.page == 'hadiah2':
-    st.markdown("<h2 style='color: #D63384;'>🫂 HADIAH KEDUA</h2>", unsafe_allow_index=True)
-    st.markdown("<h1 style='font-size: 80px;'>🫂</h1>", unsafe_allow_index=True)
+    st.markdown("<h2 style='color: #D63384;'>🫂 HADIAH KEDUA</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 80px;'>🫂</h1>", unsafe_allow_html=True)
     st.markdown("""
     **INI PELUKAN DARI mas lidoo ❤️**  
     Kalau mas lidoo ada di samping aisyahh sekarang,  
@@ -78,8 +78,8 @@ elif st.session_state.page == 'hadiah2':
 
 # --- HADIAH 3 ---
 elif st.session_state.page == 'hadiah3':
-    st.markdown("<h2 style='color: #D63384;'>🍫 HADIAH KETIGA</h2>", unsafe_allow_index=True)
-    st.markdown("<h1 style='font-size: 60px;'>🍫🍫🍫</h1>", unsafe_allow_index=True)
+    st.markdown("<h2 style='color: #D63384;'>🍫 HADIAH KETIGA</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 60px;'>🍫🍫🍫</h1>", unsafe_allow_html=True)
     st.markdown("""
     **COKELAT UNTUKMU ❤️**  
     Ini memangg baruu cokelatt virtuall...  
@@ -94,8 +94,8 @@ elif st.session_state.page == 'hadiah3':
 
 # --- HADIAH 4 ---
 elif st.session_state.page == 'hadiah4':
-    st.markdown("<h2 style='color: #D63384;'>🌷 HADIAH KEEMPAT</h2>", unsafe_allow_index=True)
-    st.markdown("<h1 style='font-size: 80px;'>🌷</h1>", unsafe_allow_index=True)
+    st.markdown("<h2 style='color: #D63384;'>🌷 HADIAH KEEMPAT</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 80px;'>🌷</h1>", unsafe_allow_html=True)
     st.markdown("""
     **SATU BUNGA UNTUKMU 🌷**  
     Bunganya memang cuma digitalll,  
@@ -109,8 +109,8 @@ elif st.session_state.page == 'hadiah4':
 
 # --- HADIAH 5 ---
 elif st.session_state.page == 'hadiah5':
-    st.markdown("<h2 style='color: #D63384;'>😂 HADIAH TERAKHIR</h2>", unsafe_allow_index=True)
-    st.markdown("<h1 style='font-size: 60px;'>😤</h1>", unsafe_allow_index=True)
+    st.markdown("<h2 style='color: #D63384;'>😂 HADIAH TERAKHIR</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 60px;'>😤</h1>", unsafe_allow_html=True)
     st.markdown("""
     **HARAPAN AKUUUU:**  
     **KAMU BISAA SENYUM SEKARANGGG! 😤❤️**  
@@ -127,8 +127,8 @@ elif st.session_state.page == 'hadiah5':
 # --- ENDING ---
 elif st.session_state.page == 'ending':
     st.balloons() # Efek balon meluncur di layar HP saat sukses selesai
-    st.markdown("<h2 style='color: #D63384;'>❤️ HADIAH TERAKHIR ❤️</h2>", unsafe_allow_index=True)
-    st.markdown("<h1 style='font-size: 60px;'>❤️</h1>", unsafe_allow_index=True)
+    st.markdown("<h2 style='color: #D63384;'>❤️ HADIAH TERAKHIR ❤️</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 60px;'>❤️</h1>", unsafe_allow_html=True)
     st.markdown("""
     Terima kasih sudah membuka semua hadiahnyaaa yaaa, Sayangkuu issahhh. ❤️  
     Aku harap kamu cepet ngerasa baikannn.  
