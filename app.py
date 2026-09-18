@@ -17,7 +17,7 @@ st.markdown("""
     .stButton>button:hover { background-color: #D63384 !important; }
     .heart-bg { font-size: 24px; text-align: center; color: #FF69B4; animation: pulse 1s infinite; }
     </style>
-""", unsafe_allow_index=True)
+""", unsafe_allow_html=True)
 
 # Inisialisasi state halaman agar bisa berpindah saat tombol diklik
 if 'page' not in st.session_state:
